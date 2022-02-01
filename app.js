@@ -13,9 +13,8 @@ const game = {
         this.prevGuesses.push(this.getGuess())
         this.render()
       
-    } while (this.prevGuesses[this.prevGuesses.length - 1] !== this.secretNum);
+    } while (this.prevGuesses[0] !== this.secretNum)
   },
-
   getGuess: function(){
     let playerGuess = null
     
@@ -24,7 +23,7 @@ const game = {
 
     } while (isNaN(playerGuess) 
     || playerGuess < this.smallestNum || playerGuess > this.biggestNum)
-    return playerGuess
+    return this.prevGuesses.unshift(playerGuess)
   },
 
   render: function(){
